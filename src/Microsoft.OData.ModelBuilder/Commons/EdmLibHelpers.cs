@@ -14,6 +14,7 @@ using Microsoft.OData.Edm.Vocabularies.V1;
 using Microsoft.OData.ModelBuilder.Annotations;
 using Microsoft.OData.ModelBuilder.Config;
 using Microsoft.Spatial;
+using NodaTime;
 
 namespace Microsoft.OData.ModelBuilder
 {
@@ -81,6 +82,8 @@ namespace Microsoft.OData.ModelBuilder
                 new KeyValuePair<Type, IEdmPrimitiveType>(typeof(TimeOnly), GetPrimitiveType(EdmPrimitiveTypeKind.TimeOfDay)),
                 new KeyValuePair<Type, IEdmPrimitiveType>(typeof(TimeOnly?), GetPrimitiveType(EdmPrimitiveTypeKind.TimeOfDay)),
 #endif
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalDate), GetPrimitiveType(EdmPrimitiveTypeKind.Date)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalDate?), GetPrimitiveType(EdmPrimitiveTypeKind.Date)),
 
                 // Keep the Binary and XElement in the end, since there are not the default mappings for Edm.Binary and Edm.String.
                 new KeyValuePair<Type, IEdmPrimitiveType>(typeof(XElement), GetPrimitiveType(EdmPrimitiveTypeKind.String)),

@@ -16,6 +16,7 @@ using Microsoft.OData.ModelBuilder.Tests.Commons;
 using Microsoft.OData.ModelBuilder.Tests.Containers;
 using Microsoft.OData.ModelBuilder.Tests.TestModels;
 using Moq;
+using NodaTime;
 using Xunit;
 
 namespace Microsoft.OData.ModelBuilder.Tests
@@ -3403,6 +3404,28 @@ namespace Microsoft.OData.ModelBuilder.Tests
             public TimeOnly? EndTime { get; set; }
         }
 #endif
+
+        [Fact]
+        public void CanConfig_LocalDate_Correctly()
+        {
+            // Arrange
+            var modelBuilder = new ODataConventionModelBuilder();
+            modelBuilder.ComplexType<LocalDateCustomer>();
+            
+            // Act
+            IEdmModel model = modelBuilder.GetEdmModel();
+            IEdmComplexType complexType = model.SchemaElements.OfType<IEdmComplexType>().First();
+
+            complexType.AssertHasPrimitiveProperty(model, "StartDate", EdmPrimitiveTypeKind.Date, isNullable: false);
+
+            complexType.AssertHasPrimitiveProperty(model, "EndDate", EdmPrimitiveTypeKind.Date, isNullable: true);
+        }
+
+        public class LocalDateCustomer
+        {
+            public LocalDate StartDate { get; set; }
+            public LocalDate? EndDate { get; set; }
+        }
     }
 
     public enum UserType
