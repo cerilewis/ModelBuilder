@@ -149,7 +149,7 @@ namespace Microsoft.OData.ModelBuilder.Tests.Commons
                 }
                 else
                 {
-                    Assert.True(property.Type.Definition.IsEquivalentTo(model.GetEdmType(propertyType)));
+                    Assert.True(property.Type.Definition.IsEquivalentTo(model.GetEdmType(propertyType)), $"Expected primitive type {propertyType} but got {property.Type.Definition}");
                 }
             }
 

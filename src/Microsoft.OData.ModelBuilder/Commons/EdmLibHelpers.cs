@@ -84,6 +84,21 @@ namespace Microsoft.OData.ModelBuilder
 #endif
                 new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalDate), GetPrimitiveType(EdmPrimitiveTypeKind.Date)),
                 new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalDate?), GetPrimitiveType(EdmPrimitiveTypeKind.Date)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalDateTime), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalDateTime?), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalTime), GetPrimitiveType(EdmPrimitiveTypeKind.TimeOfDay)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(LocalTime?), GetPrimitiveType(EdmPrimitiveTypeKind.TimeOfDay)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(OffsetDate), GetPrimitiveType(EdmPrimitiveTypeKind.Date)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(OffsetDate?), GetPrimitiveType(EdmPrimitiveTypeKind.Date)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(OffsetDateTime), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(OffsetDateTime?), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(ZonedDateTime), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(ZonedDateTime?), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(Duration), GetPrimitiveType(EdmPrimitiveTypeKind.Duration)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(Duration?), GetPrimitiveType(EdmPrimitiveTypeKind.Duration)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(Period), GetPrimitiveType(EdmPrimitiveTypeKind.Duration)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(Instant), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
+                new KeyValuePair<Type,IEdmPrimitiveType>(typeof(Instant?), GetPrimitiveType(EdmPrimitiveTypeKind.DateTimeOffset)),
 
                 // Keep the Binary and XElement in the end, since there are not the default mappings for Edm.Binary and Edm.String.
                 new KeyValuePair<Type, IEdmPrimitiveType>(typeof(XElement), GetPrimitiveType(EdmPrimitiveTypeKind.String)),

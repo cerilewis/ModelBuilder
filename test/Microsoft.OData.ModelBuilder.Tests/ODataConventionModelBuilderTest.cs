@@ -3406,25 +3406,57 @@ namespace Microsoft.OData.ModelBuilder.Tests
 #endif
 
         [Fact]
-        public void CanConfig_LocalDate_Correctly()
+        public void CanConfig_NodaTimeTypes_Correctly()
         {
             // Arrange
             var modelBuilder = new ODataConventionModelBuilder();
-            modelBuilder.ComplexType<LocalDateCustomer>();
+            modelBuilder.ComplexType<NodaTimeCustomer>();
             
             // Act
             IEdmModel model = modelBuilder.GetEdmModel();
             IEdmComplexType complexType = model.SchemaElements.OfType<IEdmComplexType>().First();
 
             complexType.AssertHasPrimitiveProperty(model, "StartDate", EdmPrimitiveTypeKind.Date, isNullable: false);
-
             complexType.AssertHasPrimitiveProperty(model, "EndDate", EdmPrimitiveTypeKind.Date, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartDateTime", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndDateTime", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartTime", EdmPrimitiveTypeKind.TimeOfDay, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndTime", EdmPrimitiveTypeKind.TimeOfDay, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartOffsetDate", EdmPrimitiveTypeKind.Date, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndOffsetDate", EdmPrimitiveTypeKind.Date, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartOffsetDateTime", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndOffsetDateTime", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartZonedDateTime", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndZonedDateTime", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartDuration", EdmPrimitiveTypeKind.Duration, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndDuration", EdmPrimitiveTypeKind.Duration, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartInstant", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndInstant", EdmPrimitiveTypeKind.DateTimeOffset, isNullable: true);
+            complexType.AssertHasPrimitiveProperty(model, "StartPeriod", EdmPrimitiveTypeKind.Duration, isNullable: false);
+            complexType.AssertHasPrimitiveProperty(model, "EndPeriod", EdmPrimitiveTypeKind.Duration, isNullable: true);
         }
 
-        public class LocalDateCustomer
+        public class NodaTimeCustomer
         {
             public LocalDate StartDate { get; set; }
             public LocalDate? EndDate { get; set; }
+            public LocalDateTime StartDateTime { get; set; }
+            public LocalDateTime? EndDateTime { get; set; }
+            public LocalTime StartTime { get; set; }
+            public LocalTime? EndTime { get; set; }
+            public OffsetDate StartOffsetDate { get; set; }
+            public OffsetDate? EndOffsetDate { get; set; }
+            public OffsetDateTime StartOffsetDateTime { get; set; }
+            public OffsetDateTime? EndOffsetDateTime { get; set; }
+            public ZonedDateTime StartZonedDateTime { get; set; }
+            public ZonedDateTime? EndZonedDateTime { get; set; }
+            public Duration StartDuration { get; set; }
+            public Duration? EndDuration { get; set; }
+            public Instant StartInstant { get; set; }
+            public Instant? EndInstant { get; set; }
+            [Required]
+            public Period StartPeriod { get; set; }
+            public Period EndPeriod { get; set; }
         }
     }
 
